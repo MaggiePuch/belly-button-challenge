@@ -54,11 +54,18 @@ d3.json(url).then(function(data) {
     dropdownMenu.append("option").text(sample).property("value", sample);
   });
 
-  //update plots based on selected id
-  function newData(selectedSample) {
+
+  // function for change in dropdown selection
+  function dropdownChange() {
+    let selectedSample = dropdownMenu.property("value");
     updateData(selectedSample, data);
   }
 
-  // Use the first sample to initialize the page
-  newData(data.names[0]);
+  //connect dropdown change event to function
+  dropdownMenu.on("change", dropdownChange);
+
+  //initialize data
+  updateData(data.names[0], data);
+
 });
+
