@@ -68,4 +68,10 @@ d3.json(url).then(function(data) {
   updateData(data.names[0], data);
 
 });
+//function for HTML onchange attribute
+function optionChanged(selectedSample) {
+  let dropdownMenu = d3.select("#selDataset");
+  dropdownMenu.property("value", selectedSample); 
 
+  dropdownMenu.on("change")(); 
+}
